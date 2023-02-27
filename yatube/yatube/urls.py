@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    #Тут я импортирую все функции и правила из приложения posts.
     path('', include('posts.urls', namespace='posts')),
     path('admin/', admin.site.urls),
 ]

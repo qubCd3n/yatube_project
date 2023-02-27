@@ -6,6 +6,7 @@ def base(request):
     template = '/base.html'
     return render(request, template)
 
+
 def index(request):
     template = 'posts/index.html'
     title = 'Это главная страница проекта Yatube'
@@ -15,6 +16,7 @@ def index(request):
         'posts': posts,
     }
     return render(request, template, context,)
+
 
 def group_posts(request, slug):
     template = 'posts/group_list.html'
