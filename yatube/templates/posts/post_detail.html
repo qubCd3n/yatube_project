@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{%block title%} Тайтл {%endblock%}
+  {%block content%}
+      <div class="row">
+        <aside class="col-12 col-md-3">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              Дата публикации: {{one_post.pub_date|date:"d E Y"}}
+            </li>
+            {%if one_post.group%}  
+            <li class="list-group-item">
+              Группа: {{ one_post.group.title}}
+              {%endif%}
+            </li>
+            <li class="list-group-item">
+              Автор: {{one_post.author.get_full_name}}
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Всего постов автора:  <span >{{one_post.author.posts.count}}</span>
+            </li>
+            <li class="list-group-item">
+              <a href="{%url 'posts:profile' one_post.author%}">
+                все посты пользователя
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <article class="col-12 col-md-9">
+          <p>
+            <!--Не работала страница при: one_post.text[:30], надеюсь ты подскажешь как исправить, потому что в чатике меня игнорят :()-->
+            {{ one_post.text }}
+          </p>
+        </article>
+      </div> 
+      {%endblock%}
+    {%block footer%}
+    {% include 'includes/paginator.html' %}
+    {% endblock %}
